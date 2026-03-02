@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SalesBriefing",
+  "type": "object",
+  "required": [
+    "company",
+    "generated_at",
+    "news",
+    "industry_context",
+    "talking_points"
+  ],
+  "properties": {
+    "company": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "news": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title", "source", "published", "url", "summary"],
+        "properties": {
+          "title": { "type": "string" },
+          "source": { "type": "string" },
+          "published": { "type": "string" },
+          "url": { "type": "string" },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "industry_context": {
+      "type": "object",
+      "required": ["industry", "trends", "ad_opportunities"],
+      "properties": {
+        "industry": { "type": "string" },
+        "trends": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "ad_opportunities": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "talking_points": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": { "type": "string" }
+    }
+  }
+}
